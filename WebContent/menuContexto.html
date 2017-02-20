@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="_css/estilo.css">
+	<title>Menu Contexto</title>
+</head>
+<body>
+	<fieldset id="fielset">
+	<legend>Menu Contexto</legend>
+			<a href="cadastrarContexto.jsp"><button>Cadastrar Contexto</button></a><br>
+			<a href="alterarContexto.html"><button>Alterar Contexto</button></a>
+
+			<form id="form" method="post" action="mvc"> 
+	                 <input type="hidden" name="logica" value="ListarContextoLogica"/>
+	       			 <input class="botao" type="submit" value="Listar Contextos">
+            </form> 
+			<a href="excluirContexto.html"><button>Excluir Contexto</button></a>
+	</fieldset>
+	<a href="index.html">
+		<button>Início</button>
+	</a> 
+</body>
+</html>
