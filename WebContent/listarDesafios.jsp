@@ -16,19 +16,17 @@
 		<td>Palavra</td>
 		<td>Imagem</td>
 		<td>Som</td>   
-		<td>Vídeo</td>
-		<td>Usuário</td>
+		<td>Vídeo</td> 
+		<td>Usuário</td> 
 		<td>Contexto</td>
 	</tr> 
-
+ 
 	<c:forEach var="desafio" items="${lista}">
 	<tr class="valores">
-		<td>${desafio.id} </td>
 		<td>${desafio.palavra}</td>
 		<td>${desafio.imagem}</td> 
 		<td>${desafio.som}</td>	  
 		<td>${desafio.video}</td>
-		<td>${desafio.usuario.nome}</td>	
 		<td>${desafio.contexto.nome}</td>	  	    
 	</tr>   
 	</c:forEach>    	    	           

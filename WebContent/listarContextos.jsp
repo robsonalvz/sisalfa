@@ -12,7 +12,7 @@
 	</style>
 </head>
 <body>
- 
+  
  <h3>Contextos cadastrados</h3>
 <table  class="tablela">
 	<tr class="nome">  
@@ -26,12 +26,10 @@
 
 	<c:forEach var="contato" items="${lista}">
 	<tr class="valores">
-		<td>${contato.id} </td>
 		<td>${contato.nome}</td>
 		<td>${contato.imagem}</td> 
 		<td>${contato.som}</td>	  
 		<td>${contato.video}</td>
-		<td>${contato.usuario.nome}</td>	  	    
 	</tr>   
 	</c:forEach>    	    	           
 </table><br> 

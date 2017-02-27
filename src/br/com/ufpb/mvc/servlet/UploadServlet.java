@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import javax.swing.JOptionPane;
 
+import br.com.ufpb.dao.ContextoDAO;
+import br.com.ufpb.dao.DesafioDAO;
 import br.com.ufpb.mvc.logica.Logica;
 
 @WebServlet("/UploadServlet")
@@ -23,6 +24,7 @@ public class UploadServlet extends HttpServlet {
 	/**
 	 * 
 	 */
+	private String operacao="";
 	private static final long serialVersionUID = 1L;
 	public static String caminhoImagem;
 	public static String caminhoVideo;
@@ -40,11 +42,14 @@ public class UploadServlet extends HttpServlet {
 		String parametro = request.getParameter("logica");
 		String nomeDaClasse = "br.com.ufpb.mvc.logica."+parametro;
 		
+		
 		// constructs path of the directory to save uploaded file
 		if (request.getParameter("nome")==null){
-			savePath = appPath + File.separator+"desafio"+" "+request.getParameter("palavra");
+			savePath = appPath + File.separator+"desafios"+File.separator+request.getParameter("palavra");
+			operacao ="desafio";
 		}else{
-			savePath = appPath + File.separator+"contexto"+" "+request.getParameter("nome");
+			savePath = appPath + File.separator+"contextos"+File.separator+request.getParameter("nome");
+			operacao="contexto";
 		}
 		/**Cria uma pasta caso ela não exista*/
 		File fileSaveDir = new File(savePath);
@@ -52,11 +57,12 @@ public class UploadServlet extends HttpServlet {
 			fileSaveDir.mkdir();
 		}
 		try{	
+			
 			//Imagem
 			Part arquivoImagem = request.getPart("fileImagem");
-			JOptionPane.showMessageDialog(null, arquivoImagem.toString());
+			/*JOptionPane.showMessageDialog(null, arquivoImagem.toString());
 			JOptionPane.showMessageDialog(null, arquivoImagem.getHeaderNames());
-			JOptionPane.showMessageDialog(null, arquivoImagem.getInputStream());
+			JOptionPane.showMessageDialog(null, arquivoImagem.getInputStream());*/
 			
 			caminhoImagem = savePath+File.separator+extractFileName(arquivoImagem);
 			arquivoImagem.write(caminhoImagem);
@@ -75,7 +81,7 @@ public class UploadServlet extends HttpServlet {
 			Class classe = Class.forName(nomeDaClasse); 
 			Logica logica = (Logica) classe.newInstance();
 			logica.executa(request, response);
-			
+			 
 		}catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("mensagem", "Arquivo não selecionado!");
@@ -94,7 +100,16 @@ public class UploadServlet extends HttpServlet {
 		String[] items = contentDisp.split(";");
 		for (String s : items) {
 			if (s.trim().startsWith("filename")) {
-				return s.substring(s.indexOf("=") + 2, s.length()-1);
+				if (operacao.equals("contexto")){
+					ContextoDAO dao = new ContextoDAO();
+					long id = dao.retornaIdContexto();
+					return id+s.substring(s.indexOf("."), s.length()-1);
+				}else{
+					DesafioDAO dao = new DesafioDAO();
+					long id = dao.retornaIdDesafio();
+					return id+s.substring(s.indexOf("."), s.length()-1);
+				}
+				
 			}
 		}
 		return "novo";
