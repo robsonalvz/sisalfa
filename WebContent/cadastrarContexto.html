@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="_css/estilo.css">
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto Slab:400,700|Pacifico" rel="stylesheet"> 
+	<title>Cadastrar Contexto</title>
+</head>
+<body>
+	<nav>
+	<a href="">S i s a l f a</a>
+		<ul>
+			<li><a href="index.html">Inicio</a></li>
+			<li><a href="">Contextos</a></li>
+			<li><a href="">Desafios</a></li>
+			<li><a href="">Contribua</a></li>
+			<li><a href="">Sobre</a></li>
+		</ul>
+	</nav>
+	<form class="formulario" action="uploadServlet" method="POST" enctype="multipart/form-data"> 
+		<section id="conteudo">
+			<h3>Novo Contexto</h3>
+			<div>
+				<label>Nome:</label> 
+				<input placeholder="Digite o nome do contexto..." type="text" name="nome" /><br /> 
+			</div>
+
+			<div>
+				<label>ID Usuario:</label> 
+				<input placeholder="Digite o id..." type="text" name="idUsuario" /><br /> 
+			</div>
+
+			<div>
+				<label>Imagem:</label>  
+				<input type="file" name="fileImagem" size="60" /><br />	
+			</div>
+
+			<div>
+				<label>Som:</label>  
+				<input type="file" name="fileSom" size="60" /><br />	
+			</div>
+
+			<div>
+				<label>Video:</label>  
+				<input type="file" name="fileVideo" size="60" /><br />	
+			</div>
+		</section>
+
+		<input type="hidden" value="CadastrarContextoLogica" name="logica" />		
+		<input type="submit" class="botao"value="Gravar" />
+
+		<a href="index.html">
+				<button class="botao">Inicio</button>
+		</a> 
+	</form >  
+			
+	<footer>
+		<h3>Desenvolvido por Robson Alves.</h3>
+	</footer>
+</body>
+</html>

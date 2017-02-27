@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="_css/estilo.css">
+	<title>Cadastrar Desafio</title>
+</head>
+<body>
+	<nav>
+	<a href="">S i s a l f a</a>
+		<ul>
+			<li><a href="index.html">Inicio</a></li>
+			<li><a href="">Contextos</a></li>
+			<li><a href="">Desafios</a></li>
+			<li><a href="">Contribua</a></li>
+			<li><a href="">Sobre</a></li>
+		</ul>
+	</nav>
+	<form class="formulario" action="uploadServlet" method="POST" enctype="multipart/form-data"> 
+		<section id="conteudo">
+			<h3>Novo Desafio</h3>
+
+			<label>Palavra:</label> 
+			<input placeholder="Digite a palavra..." type="text" name="palavra" /><br /> 
+
+			<label>ID Usuario:</label> 
+			<input placeholder="Digite o id..." type="text" name="idUsuario" /><br /> 	
+
+			<label>Selecione o Contexto:</label>
+			<input placeholder="Digite o id do contexto" type="text" name="idContexto"/><br>
+
+			<label>Imagem:</label> 
+			<input type="file" name="fileImagem" size="60" /><br />	
+
+			<label>Som:</label> 
+			<input type="file" name="fileSom" size="60" /><br />	
+
+			<label>Video:</label> 
+			<input type="file" name="fileVideo" size="60" /><br />	
+			
+			
+		</section>
+		<input type="hidden" name="logica" value="CadastrarDesafioLogica"/>		
+		<input type="submit" class="botao"value="Gravar" />
+		<a href="index.html">
+			<button class="botao">Inicio</button>
+		</a>
+
+	</form>	
+	<footer>
+		<h3>Desenvolvido por Robson Alves.</h3>
+	</footer>
+</body>
+</html>
