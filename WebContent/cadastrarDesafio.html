@@ -10,34 +10,44 @@
 	<a href="">S i s a l f a</a>
 		<ul>
 			<li><a href="index.html">Inicio</a></li>
-			<li><a href="">Contextos</a></li>
-			<li><a href="">Desafios</a></li>
+			<li><a href="cadastrarContexto.html">Contextos</a></li>
+			<li><a href="cadastrarDesafio.html">Desafios</a></li>
 			<li><a href="">Contribua</a></li>
-			<li><a href="">Sobre</a></li>
+			<li><a href="sobre.html">Sobre</a></li>
 		</ul>
 	</nav>
 	<form class="formulario" action="uploadServlet" method="POST" enctype="multipart/form-data"> 
 		<section id="conteudo">
 			<h3>Novo Desafio</h3>
-
-			<label>Palavra:</label> 
-			<input placeholder="Digite a palavra..." type="text" name="palavra" /><br /> 
-
-			<label>ID Usuario:</label> 
-			<input placeholder="Digite o id..." type="text" name="idUsuario" /><br /> 	
-
-			<label>Selecione o Contexto:</label>
-			<input placeholder="Digite o id do contexto" type="text" name="idContexto"/><br>
-
-			<label>Imagem:</label> 
-			<input type="file" name="fileImagem" size="60" /><br />	
-
-			<label>Som:</label> 
-			<input type="file" name="fileSom" size="60" /><br />	
-
-			<label>Video:</label> 
-			<input type="file" name="fileVideo" size="60" /><br />	
+			<div>
+				<label>Palavra:</label> 
+				<input placeholder="Digite a palavra..." type="text" name="palavra" /><br /> 
+			</div>
 			
+			<div>
+				<label>ID Usuario:</label> 
+				<input placeholder="Digite o id..." type="text" name="idUsuario" /><br /> 	
+			</div>
+			
+			<div>
+				<label>Selecione o Contexto:</label>
+				<input placeholder="Digite o id do contexto" type="text" name="idContexto"/><br>
+			</div>
+			
+			<div>
+				<label>Imagem:</label> 
+				<input type="file" name="fileImagem" size="60" /><br />	
+			</div>
+			
+			<div>
+				<label>Som:</label> 
+				<input type="file" name="fileSom" size="60" /><br />	
+			</div>
+			
+			<div>
+				<label>Video:</label> 
+				<input type="file" name="fileVideo" size="60" /><br />	
+			</div>
 			
 		</section>
 		<input type="hidden" name="logica" value="CadastrarDesafioLogica"/>		

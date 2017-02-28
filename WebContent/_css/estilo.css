@@ -1,7 +1,8 @@
 @charset="utf-8";
 @import url(https://fonts.googleapis.com/css?family=Barrio);
-	
-body{  
+
+body{ 
+	margin:0;
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 	text-align: center;
 	background-color: white;
@@ -109,6 +110,7 @@ input{
 	padding: 5px;
 	border-radius: 3px;
 }
+
 /*Sobre*/
 #sobre {
 	padding: 20px;
@@ -117,6 +119,7 @@ input{
 	
 }
 .pConteudo{
+	text-indent: 2em;
 	width: 57%;
 	margin-left: 21%;
 	text-align:justify;
@@ -127,13 +130,13 @@ input{
 Footer
 
 */
-footer{
-	margin: -8px -8px;
-	margin-top: 30px;
+
+footer {
+	bottom:0;
+	margin-top: 50px;
 	padding: 20px; 
 	background-color: #01051c;
     color:#f1f1f1;
-
 }
 
 /*responsividade*/
@@ -142,7 +145,6 @@ footer{
 	Mavegacap
 	*/
 	nav{
-		margin: -8px -8px;
 		flex-direction: row;
 		justify-content: space-around;
 	}

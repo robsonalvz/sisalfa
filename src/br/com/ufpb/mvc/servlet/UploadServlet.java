@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.swing.JOptionPane;
 
 import br.com.ufpb.dao.ContextoDAO;
 import br.com.ufpb.dao.DesafioDAO;
@@ -37,6 +38,7 @@ public class UploadServlet extends HttpServlet {
 		// gets absolute path of the web application
 		File fileSaveDir2 = new File(".");
 		String caminhoAtual = fileSaveDir2.getCanonicalPath();
+		JOptionPane.showMessageDialog(null, caminhoAtual);
 		String appPath = caminhoAtual+File.separator+"uploads";
 		String savePath ="";
 		String parametro = request.getParameter("logica");
