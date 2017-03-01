@@ -8,32 +8,30 @@
 </head>
 <body>
 	<nav>
-	<a href="">S i s a l f a</a>
+	<a href="index.html">S i s a l f a</a>
 		<ul>
-			<li><a href="">Inicio</a></li>
-			<li><a href="">Contextos</a></li>
-			<li><a href="">Desafios</a></li>
+			<li><a href="index.html">Inicio</a></li>
+			<li><a href="cadastrarContexto.html">Contextos</a></li>
+			<li><a href="cadastrarDesafio.html">Desafios</a></li>
 			<li><a href="">Contribua</a></li>
+			<li><a href="sobre.html">Sobre</a></li>
 		</ul>
 	</nav>
-	<%@ page import="java.util.*, br.com.ufpb.dao.*, br.com.ufpb.modelo.*" %> 
 	<section id="conteudo">	
 		<h3>Menu Contexto</h3>
 			<a href="cadastrarContexto.html"><button>Cadastrar Contexto</button></a><br>
 			<h3>Contextos :</h3>
-			 <%
-			 	ContextoDAO dao = new ContextoDAO();
-			  	List<Contexto> contextos = dao.findAll();
-			  	for (Contexto contexto : contextos) {
-			 %>
-			<h3>	<%=contexto.getNome()%> </h3>
-	       <% } %> 		 
-		<a href="index.html">
-			<button>Início</button>
-		</a> 
+					<jsp:useBean id="dao" class="br.com.ufpb.dao.ContextoDAO"/>
+					  <!-- for -->
+					  <c:forEach var="contato" items="${dao.findAll()}">
+					   	  <fieldset> 
+					   	  		<label>${contato.nome}</label>
+					      		<img src="${contato.imagem}" alt="imagem">
+					      </fieldset>
+					  </c:forEach> 
 	</section>
 	<footer>
-		<h3>Desenvolvido por Robson Alves.</h3>
+		<h4>Desenvolvido por Robson Alves.</h4>
 	</footer>
 </body>
 </html>
