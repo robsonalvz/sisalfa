@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.ufpb.mvc.logica.Logica;
 
-
-public class ControllerServlet extends HttpServlet{
+public class ControllerServlet extends HttpServlet {
 	/**
 	 * 
 	 */
@@ -21,18 +20,16 @@ public class ControllerServlet extends HttpServlet{
 			throws ServletException, IOException {
 		String parametro = request.getParameter("logica");
 		String nomeDaClasse = "br.com.ufpb.mvc.logica." + parametro;
-		
-		try{
-			@SuppressWarnings("rawtypes")
-			Class classe = Class.forName(nomeDaClasse); 
+
+		try {
+			Class<?> classe = Class.forName(nomeDaClasse);
 			Logica logica = (Logica) classe.newInstance();
 			logica.executa(request, response);
-			
-		}catch(Exception e){
-			throw new ServletException("A lógica de " + " negócios causou uma excecão", e);			
-			
+		} catch (Exception e) {
+			throw new ServletException("A lógica de " + " negócios causou uma excecão", e);
+
 		}
-		
+
 	}
 
 }
