@@ -30,8 +30,5 @@
 					  </c:forEach> 
 					  
 	</section>
-	<footer>   
-		<h4>Desenvolvido por Robson Alves.</h4>
-	</footer>
 </body>
 </html>
