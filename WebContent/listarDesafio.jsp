@@ -19,7 +19,7 @@
 	</nav>
 	<section id="conteudo">	
 		<h3>Menu Desafio</h3>
-			<a href="cadastrarDesafio.html"><button>Cadastrar Desafio</button></a><br>
+			<a href="cadastrarDesafio.html"><button>Novo Desafio</button></a><br>
 			<h3>Desafios :</h3>
 					<jsp:useBean id="dao" class="br.com.ufpb.dao.DesafioDAO"/>
 					  <!-- for -->

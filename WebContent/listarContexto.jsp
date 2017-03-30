@@ -19,7 +19,7 @@
 	</nav>
 	<section id="conteudo">	
 		<h3>Menu Contexto</h3>
-			<a href="cadastrarContexto.html"><button>Cadastrar Contexto</button></a><br>
+			<a href="cadastrarContexto.html"><button>Novo Contexto</button></a><br>
 			<h3>Contextos :</h3>
 					<jsp:useBean id="dao" class="br.com.ufpb.dao.ContextoDAO"/>
 					  <!-- for -->

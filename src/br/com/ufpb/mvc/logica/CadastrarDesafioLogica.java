@@ -14,7 +14,7 @@ import br.com.ufpb.mvc.servlet.UploadServlet;
 public class CadastrarDesafioLogica implements Logica{
 
 	@Override
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void executa(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		Desafio desafio = new Desafio();
 		DesafioDAO desafioDao = new DesafioDAO();
 		// palavra imagem som video usuario e contexto

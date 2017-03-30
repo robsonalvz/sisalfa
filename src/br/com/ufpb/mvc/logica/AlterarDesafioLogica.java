@@ -21,7 +21,7 @@ public class AlterarDesafioLogica implements Logica {
 		desafioDao.update(desafio);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/sucesso.html");
-		rd.forward(request,response);
+		rd.forward(request, response);
 	}
 
 }
