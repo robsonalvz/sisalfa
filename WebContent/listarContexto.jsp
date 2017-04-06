@@ -24,9 +24,12 @@
 					<jsp:useBean id="dao" class="br.com.ufpb.dao.ContextoDAO"/>
 					  <!-- for -->
 					  <c:forEach var="contexto" items="${dao.findAll()}">
-					  
-					   	  		<label>${contexto.nome}</label>
-					      		<img src="${contexto.imagem}" alt="imagem">
+					  			<div>
+						   	  		<label>${contexto.nome}</label>
+						      		<img src="${contexto.imagem}" alt="imagem">
+						     
+								
+								</div>
 					  </c:forEach> 
 					  
 	</section>

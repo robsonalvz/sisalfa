@@ -18,7 +18,7 @@ import br.com.ufpb.mvc.logica.Logica;
 
 @WebServlet("/UploadServlet")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-		maxFileSize = 1024 * 1024 * 10, // 10MB
+		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -57,6 +57,9 @@ public class UploadServlet extends HttpServlet {
 		try {
 			// Imagem
 			Part arquivoImagem = request.getPart("fileImagem");
+			
+			/* o caminho da imagem sera a pasta uploads / {nome do contexto ou desafio} / nomedoarquivo.extensao */
+
 			if (request.getParameter("nome") == null) {
 				caminhoImagem = pasta + File.separator + request.getParameter("palavra") + File.separator
 						+ extractFileName(arquivoImagem);
@@ -64,18 +67,18 @@ public class UploadServlet extends HttpServlet {
 				caminhoImagem = pasta + File.separator + request.getParameter("nome") + File.separator
 						+ extractFileName(arquivoImagem);
 			}
-
+			/*o caminho para salvar o arquivo será o caminho atual do projeto / webContent / uploads / {contexto ou desafio}*/
 			arquivoImagem.write(savePath + File.separator + extractFileName(arquivoImagem));
 
 			// Som
 			Part arquivoSom = request.getPart("fileSom");
-			caminhoSom = savePath + File.separator + extractFileName(arquivoSom);
-			arquivoSom.write(caminhoSom);
+			caminhoSom = pasta + File.separator + extractFileName(arquivoSom);
+			arquivoSom.write(savePath + File.separator + extractFileName(arquivoSom));	
 
 			// Video
 			Part arquivoVideo = request.getPart("fileVideo");
-			caminhoVideo = savePath + File.separator + extractFileName(arquivoVideo);
-			arquivoVideo.write(caminhoVideo);
+			caminhoVideo = pasta + File.separator + extractFileName(arquivoVideo);
+			arquivoVideo.write(savePath+File.separator+extractFileName(arquivoVideo));
 
 			Class<?> classe = Class.forName(nomeDaClasse);
 			Logica logica = (Logica) classe.newInstance();

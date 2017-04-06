@@ -144,6 +144,7 @@ Footer
 
 footer {
 	bottom:0;
+	margin-bottom:0px;
 	margin-top: 50px;
 	padding: 20px; 
 	background-color: #01051c;
@@ -155,9 +156,9 @@ footer {
 responsividade
 
 */
-@media screen and (min-width: 768px){
+@media screen and (min-device-width: 768px){
 	/*
-	Mavegacap
+	Navegacao
 	*/
 	nav{
 		flex-direction: row;
