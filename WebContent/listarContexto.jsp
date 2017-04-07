@@ -27,7 +27,7 @@
 					  			<div>
 						   	  		<label>${contexto.nome}</label>
 						      		<img src="${contexto.imagem}" alt="imagem">
-						     
+						     		<video src="${contexto.video }"></video>
 								
 								</div>
 					  </c:forEach> 
