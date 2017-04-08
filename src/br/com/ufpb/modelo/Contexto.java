@@ -17,7 +17,7 @@ public class Contexto extends AbstractEntity {
 	private String imagem;
 	@Column(nullable = false)
 	private String som;
-	@Column(nullable = false)
+	@Column(nullable = false) 
 	private String video;
 	@JoinColumn(nullable=false)
 	@OneToOne(cascade={CascadeType.PERSIST},fetch=FetchType.LAZY)

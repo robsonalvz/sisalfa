@@ -16,7 +16,7 @@ public class GenericDAO <T extends AbstractEntity>{
 		EntityManagerFactory fac = Persistence.createEntityManagerFactory("tarefas");
 		entityManager=fac.createEntityManager();
 	}
-	public T getById(Long id){
+	public T getById(Long id){ 
 		return (T) entityManager.find(getTypeClass(), id);
 	}
 	
