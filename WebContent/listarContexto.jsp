@@ -25,8 +25,15 @@
 					  <!-- for -->
 					  <c:forEach var="contexto" items="${dao.findAll()}">
 					  			
-						   	  		<label>${contexto.nome}</label>
+						   	  		<label>Nome : ${contexto.nome} <br> scr: ${contexto.imagem}</label>
+						   	  		
 						      		<img src="${contexto.imagem}" alt="imagem">
+						      		<br>
+						      		<label>src : ${contexto.video}</label>
+						      		<video width="320" height="240" controls="controls" autoplay="autoplay">
+									<source src="${contexto.video}" type="video/mp4"></video>
+						      		<br>
+						      		<audio src="${contexto.som}"></audio>
 								
 					  </c:forEach> 
 					  

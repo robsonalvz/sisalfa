@@ -8,7 +8,7 @@ public class DesafioDAO extends GenericDAO <Desafio> {
 		DesafioDAO dao = new DesafioDAO();
 		int ultimo;
 		if (dao.findAll().size()==0){
-			ultimo= 0;
+			ultimo= 0; 
 		}else{
 			ultimo  = dao.findAll().size()-1;
 		}

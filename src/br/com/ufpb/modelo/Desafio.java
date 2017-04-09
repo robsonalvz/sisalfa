@@ -24,7 +24,7 @@ public class Desafio extends AbstractEntity {
 	@OneToOne(cascade={CascadeType.PERSIST},fetch=FetchType.LAZY)
 	private Usuario usuario;
 	@JoinColumn(nullable=false)
-	@ManyToOne(cascade={CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.REMOVE},fetch=FetchType.LAZY)
+	@ManyToOne(cascade={CascadeType.ALL},fetch=FetchType.LAZY)
 	private Contexto contexto;
 	
 	public String getPalavra() {
