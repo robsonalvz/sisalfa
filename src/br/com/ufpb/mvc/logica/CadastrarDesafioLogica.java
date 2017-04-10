@@ -18,7 +18,7 @@ public class CadastrarDesafioLogica implements Logica{
 		Desafio desafio = new Desafio();
 		DesafioDAO desafioDao = new DesafioDAO();
 		// palavra imagem som video usuario e contexto
-		String palavra = request.getParameter("palavra");
+		String palavra = request.getParameter("palavra").toUpperCase();
 		String idCon = request.getParameter("idContexto");
 		
 		Contexto contexto = new Contexto();

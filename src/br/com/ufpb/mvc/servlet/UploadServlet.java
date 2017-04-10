@@ -20,66 +20,76 @@ import br.com.ufpb.mvc.logica.Logica;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50) // 50MB
+
+
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String operacao = "";
-	public static String caminhoImagem;
-	public static String caminhoVideo;
-	public static String caminhoSom;
-
-	/**
-	 * lida com upload de arquivo
-	 */
+	private static String operacao;
+	public static String caminhoImagem,caminhoVideo,caminhoSom;
+	
+	// METODO PARA UPLOAD DE ARQUIVOS
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// gets absolute path of the web application
-		String caminhoAtual = "/home/lucy/Dropbox/workspace/Sisalfa/WebContent";
+		
+		String savePath,pasta;
 
-		String appPath = caminhoAtual + File.separator + "uploads";
-		String savePath = "";
-		String pasta = "";
-		String parametro = request.getParameter("logica");
-		String nomeDaClasse = "br.com.ufpb.mvc.logica." + parametro;
-		// constructs path of the directory to save uploaded file
+		String uploadPath = "/home/lucy/Dropbox/workspace/Sisalfa/WebContent/uploads";
+		String nomeDaClasse = "br.com.ufpb.mvc.logica." + request.getParameter("logica");
+		
+		// VERIFICAÇÃO SE A OPERACAO É CONTEXTO OU DESAFIO
+		
 		if (request.getParameter("nome") == null) {
-			savePath = appPath + File.separator + "desafios" + File.separator + request.getParameter("palavra");
-			pasta = "uploads" + File.separator + "desafios";
+			//PASTA PARA GRAVAÇÃO NO DISCO
+			savePath = uploadPath + File.separator + "desafios" + File.separator + request.getParameter("palavra");
+			
+			//PASTA PARA GRAVAÇÃO NO BANCO DE DADOS
+			pasta = "uploads" + File.separator + "desafios" +File.separator + request.getParameter("palavra");
 			operacao = "desafio";
-		} else {
-			savePath = appPath + File.separator + "contextos" + File.separator + request.getParameter("nome");
-			pasta = "uploads" + File.separator + "contextos";
+		}else{
+			//PASTA PARA GRAVACAO NO DISCO
+			savePath = uploadPath + File.separator + "contextos" + File.separator + request.getParameter("nome");
+			
+			//PASTA PARA GRAVAÇÃO NO BANCO DE DADOS
+			pasta = "uploads" + File.separator + "contextos"+ File.separator + request.getParameter("nome");
 			operacao = "contexto";
 		}
-		/** Cria uma pasta caso ela não exista */
+		
+		// Cria uma pasta caso ela não exista 
+		
 		File fileSaveDir = new File(savePath);
 		if (!fileSaveDir.exists()) {
 			fileSaveDir.mkdir();
 		}
+		
+		// PROCESSAMENTO
+		
 		try {
-			// Imagem
+			// =============== IMAGEM ======================
+			
 			Part arquivoImagem = request.getPart("fileImagem");
 			
-			/* o caminho da imagem sera a pasta uploads / {nome do contexto ou desafio} / nomedoarquivo.extensao */
+			caminhoImagem = pasta + File.separator + extractFileName(arquivoImagem);
+			
+			arquivoImagem.write(savePath+File.separator + extractFileName(arquivoImagem));
 
-			if (request.getParameter("nome") == null) {
-				caminhoImagem = pasta + File.separator + request.getParameter("palavra") + File.separator
-						+ extractFileName(arquivoImagem);
-			} else {
-				caminhoImagem = pasta + File.separator + request.getParameter("nome") + File.separator
-						+ extractFileName(arquivoImagem);
-			}
-			/*o caminho para salvar o arquivo será o caminho atual do projeto / webContent / uploads / {contexto ou desafio}*/
-			arquivoImagem.write(savePath + File.separator + extractFileName(arquivoImagem));
-
-			// Som
+			// ================= SOM =========================
+			
 			Part arquivoSom = request.getPart("fileSom");
+			
 			caminhoSom = pasta + File.separator + extractFileName(arquivoSom);
-			arquivoSom.write(savePath + File.separator + extractFileName(arquivoSom));	
+			
+			arquivoSom.write(savePath+File.separator+extractFileName(arquivoSom));	
 
-			// Video
+			// ================VIDEO ==========================
+			
 			Part arquivoVideo = request.getPart("fileVideo");
+			
 			caminhoVideo = pasta + File.separator + extractFileName(arquivoVideo);
+			
 			arquivoVideo.write(savePath+File.separator+extractFileName(arquivoVideo));
 
+			// INSERINDO OS DADOS NO BANCO DE DADOS
+			
 			Class<?> classe = Class.forName(nomeDaClasse);
 			Logica logica = (Logica) classe.newInstance();
 			logica.executa(request, response);
@@ -93,9 +103,9 @@ public class UploadServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	/**
-	 * Extrair nome de arquivo de cabeçalho HTTP content-disposition
-	 */
+
+	// EXTRAÇÃO E MODIFICAÇÃO DO NOME DO ARQUIVO 
+	
 	private String extractFileName(Part part) {
 		String nome = "";
 		String contentDisp = part.getHeader("content-disposition");

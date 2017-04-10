@@ -18,7 +18,7 @@ public class CadastrarContextoLogica implements Logica {
 		ContextoDAO contextoDao = new ContextoDAO();
 		UsuarioDAO usuarioDao = new UsuarioDAO();
 		// pegando da pagina
-		String nome = request.getParameter("nome");
+		String nome = request.getParameter("nome").toUpperCase();
 		String imagem = UploadServlet.caminhoImagem;
 		String som = UploadServlet.caminhoSom;
 		String video = UploadServlet.caminhoVideo;
