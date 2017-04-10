@@ -21,27 +21,30 @@
 	<h3>Contextos</h3><br>
 	<a href="cadastrarContexto.html"><button>Novo Contexto</button></a>
 	<section id="conteudoContexto">
+	
 			<jsp:useBean id="dao" class="br.com.ufpb.dao.ContextoDAO"/>
-			  <!-- for -->
+			
 			   <table>
-			  <c:forEach var="contexto" items="${dao.findAll()}">
-			   	<tr>
-			   		<th>Nome</th>
-			   		<th>Imagem</th>
-			   		<th>Video</th>
-					<th>Som</th>			   	
-			   	</tr>
-				<tr class="valores">
-					<td>${contexto.nome }</td>
-					<td><img src="${contexto.imagem}"alt="imagem"></td>
-					<td>
-						<video width="320" height="240" controls="controls">
-						<source src="${contexto.video}" type="video/mp4"></video>
-					</td>
-					<td><audio  controls="controls" src="${contexto.som}"></audio></td>
-				</tr>      		
-						
-			  </c:forEach> 
+			   
+				  	<c:forEach var="contexto" items="${dao.findAll()}">
+				  	<tr>
+				   		<th>Nome</th>
+				   		<th>Imagem</th>
+				   		<th>Video</th>
+						<th>Som</th>			   	
+				  	</tr>
+				  	
+					<tr class="valores">
+						<td>${contexto.nome }</td>
+						<td><img src="${contexto.imagem}"alt="imagem"></td>
+						<td>
+							<video width="320" height="240" controls="controls">
+							<source src="${contexto.video}" type="video/mp4"></video>
+						</td>
+						<td><audio  controls="controls" src="${contexto.som}"></audio></td>
+					</tr>      		
+	
+				  </c:forEach> 
 			  </table>
 	</section>
 </body>
