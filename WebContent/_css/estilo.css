@@ -1,8 +1,11 @@
 @charset="utf-8";
 @import url(https://fonts.googleapis.com/css?family=Barrio);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto Slab:400,700|Pacifico);
+*{
+    margin:0;
+    padding:0;
+}
 body{ 
-	margin:0;
 	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 	text-align: center;
 	background-color: white;
@@ -147,10 +150,12 @@ Footer
 */
 
 footer {
-	bottom:0;
+	position: fixed;
+    width: 100%;
+    bottom: 0;
 	margin-bottom:0px;
 	margin-top: 50px;
-	padding: 20px; 
+	padding: 18px; 
 	background-color: #01051c;
     color:#f1f1f1;
 }

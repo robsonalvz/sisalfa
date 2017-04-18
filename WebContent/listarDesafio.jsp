@@ -18,7 +18,7 @@
 		</ul>
 	</nav>
 	<br>
-	<h3>Desafios</h3>
+	<h3>Desafios</h3><br>
 	<a href="cadastrarDesafio.html"><button>Novo Desafio</button></a>
 	<section id="conteudoContexto">	
 	
