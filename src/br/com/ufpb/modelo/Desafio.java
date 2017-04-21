@@ -20,9 +20,11 @@ public class Desafio extends AbstractEntity {
 	private String som;
 	@Column(nullable = false)
 	private String video;
+	
 	@JoinColumn(nullable=false)
 	@OneToOne(cascade={CascadeType.PERSIST},fetch=FetchType.LAZY)
 	private Usuario usuario;
+	
 	@JoinColumn(nullable=false)
 	@ManyToOne(cascade={CascadeType.ALL},fetch=FetchType.LAZY)
 	private Contexto contexto;
