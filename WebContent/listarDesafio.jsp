@@ -5,6 +5,24 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="_css/estilo.css">
 	<title>Desafios</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	 <script>
+		$(document).ready(function(){
+			$.getJSON("http://localhost:8080/meuProjetoWeb/webapi/desafios/getAll", function(result){
+				$.each(result, function(indice, value){
+					$("#desafios").append('<tr> <td>' + value.id + '</td>' + 
+						'<td>' + value.palavra + '</td>' + 
+						'<td><img src="' + value.imagem + '"></td>' + 
+						'<td>'+ value.som +'</td>' +
+						'<td>'+ value.video +'</td>' +
+						'<td>'+ value.contexto.id +'</td>' +
+						'<td>'+ value.usuario.id +'</td>' +
+						'</tr>'
+					);	
+				});
+			});
+		});
+	</script>
 </head>
 <body>
 	<nav>
@@ -13,7 +31,7 @@
 			<li><a href="index.html">Inicio</a></li>
 			<li><a href="listarContexto.jsp">Contextos</a></li>
 			<li><a href="listarDesafio.jsp">Desafios</a></li>
-			<li><a href="">Contribua</a></li>
+			<li><a href="cadastrarUsuario.html">Usuario</a></li>
 			<li><a href="sobre.html">Sobre</a></li>
 		</ul>
 	</nav>
@@ -22,31 +40,22 @@
 	<a href="cadastrarDesafio.html"><button>Novo Desafio</button></a>
 	<section id="conteudoContexto">	
 	
-					<jsp:useBean id="dao" class="br.com.ufpb.dao.DesafioDAO"/>
 			
 			   <table>
-			   
-				  	<c:forEach var="desafio" items="${dao.findAll()}">
+			   <thead>
 				  	<tr>
+				  		<th>id</th>
 				   		<th>Palavra</th>
 				   		<th>Imagem</th>
 				   		<th>Video</th>
 						<th>Som</th>
-						<th>Contexto</th>			   	
+						<th>Contexto</th>	
+						<th>Usuario</th>			   	
 				  	</tr>
-				  	
-					<tr class="valores">
-						<td>${desafio.palavra }</td>
-						<td><img src="${desafio.imagem}"alt="imagem"></td>
-						<td>
-							<video width="320" height="240" controls="controls">
-							<source src="${desafio.video}" type="video/mp4"></video>
-						</td>
-						<td><audio  controls="controls" src="${desafio.som}"></audio></td>
-						<td>${desafio.contexto.nome}</td>
-					</tr>      		
-	
-				  </c:forEach> 
+				</thead>
+				  <tbody id="desafios"></tbody>     		
+				  	    		
+
 			  </table>
 	</section>
 </body>

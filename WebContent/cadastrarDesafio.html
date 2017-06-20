@@ -4,6 +4,33 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="_css/estilo.css">
 	<title>Cadastrar Desafio</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#btnEnviar').click(function(event) {
+					$.ajax({
+						url : 'http://localhost:8080/meuProjetoWeb/webapi/desafios/add',
+						type : 'POST',	
+						data: JSON.stringify({					
+    					palavra: $('#palavra').val(),
+    					usuario: $('#idUsuario').val(),
+    					contexto: $('#idContexto').val(),
+    					imagem: $('#imagem').val(),
+    					som: $('#som').val(),
+    					video: $('#video').val()}),
+    					contentType : "application/json; charset=utf-8",
+    					dataType : 'json',
+    					success: function (result) {
+    	    				alert("Desafio enviado com sucesso!");
+                			window.location = "http://localhost:8080/Sisalfa/sucesso.html";
+             			},
+             			error: function () {
+                 			alert("Erro ao enviar desafio");
+             			}
+					});
+				});	
+			});
+		</script>
 </head>
 <body>
 	<nav>
@@ -16,42 +43,41 @@
 			<li><a href="sobre.html">Sobre</a></li>
 		</ul>
 	</nav>
-	<form class="formulario" action="uploadServlet" method="POST" enctype="multipart/form-data"> 
+	<form class="formulario" method="POST"> 
 		<section id="conteudo">
 			<h3>Novo Desafio</h3>
 			<div>
 				<label>Palavra:</label> 
-				<input placeholder="Digite a palavra..." type="text" name="palavra" /><br /> 
+				<input placeholder="Digite a palavra..." id="palavra" type="text" name="palavra" /><br /> 
 			</div>
 			
 			<div>
 				<label>ID Usuario:</label> 
-				<input placeholder="Digite o id..." type="text" name="idUsuario" /><br /> 	
+				<input placeholder="Digite o id..." id="idUsuario"type="text" name="idUsuario" /><br /> 	
 			</div>
 			
 			<div>
 				<label>Selecione o Contexto:</label>
-				<input placeholder="Digite o id do contexto" type="text" name="idContexto"/><br>
+				<input placeholder="Digite o id do contexto" id="idContexto"type="text" name="idContexto"/><br>
 			</div>
 			
 			<div>
 				<label>Imagem:</label> 
-				<input type="file" name="fileImagem" size="60" /><br />	
+				<input type="text"id="imagem" name="fileImagem" size="60" /><br />	
 			</div>
 			
 			<div>
 				<label>Som:</label> 
-				<input type="file" name="fileSom" size="60" /><br />	
+				<input type="text" id="som"name="fileSom" size="60" /><br />	
 			</div>
 			
 			<div>
 				<label>Video:</label> 
-				<input type="file" name="fileVideo" size="60" /><br />	
+				<input type="text" id="video"name="fileVideo" size="60" /><br />	
 			</div>
 			
 		</section>
-		<input type="hidden" name="logica" value="CadastrarDesafioLogica"/>		
-		<input type="submit" class="botao"value="Gravar" />
+		<input type="submit" id="btnEnviar" class="botao"value="Gravar" />
 	
 
 	</form>	
