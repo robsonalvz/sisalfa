@@ -9,29 +9,39 @@
 			$(document).ready(function() {
 				$('#btnEnviar').click(function(event) {
 					$.ajax({
-						url : 'http://localhost:8080/meuProjetoWeb/webapi/contextos/add',
+						url : 'http://localhost:8080/Sisalfa/addContext',
 						type : 'POST',	
 						data: JSON.stringify({					
-    					nome: $('#nome').val(),
-    					usuario: $('#idUsuario').val(),
-    					imagem: $('#imagem').val(),
-    					som: $('#som').val(),
-    					video: $('#video').val()}),
+	    					nome: $('#nome').val(),
+	    					idUsuario: $('select option:selected').val(),
+	    					imagem: $('#imagem').val(),
+	    					som: $('#som').val(),
+	    					video: $('#video').val()
+    					}),
     					contentType : "application/json; charset=utf-8",
     					dataType : 'json',
-    					success: function (result) {
+    					success: function () {
     	    				alert("Contextos enviados com sucesso!");
                 			window.location = "http://localhost:8080/Sisalfa/sucesso.html";
-             			},
-             			error: function () {
-                 			alert("Erro ao enviar contexto");
              			}
 					});
 				});	
 			});
 		</script>
+		<script>
+		$(document).ready(function(){
+			$.getJSON("http://localhost:8080/Sisalfa/getAllUsers", function(result){
+				$.each(result, function(indice, value){
+					$("#users").append('<option>' + value.id + '</option>'
+					);	
+				});
+			});
+		});
+	
+	</script>
+	
 </head>
-<body>
+<body id="corpo">
 	<nav>
 	<a href="">S i s a l f a</a>
 		<ul>
@@ -51,8 +61,9 @@
 			</div>
 
 			<div>
-				<label>ID Usuario:</label> 
-				<input placeholder="Digite o id..." id="idUsuario" type="text" name="idUsuario" /><br /> 
+			<label>Usuario:</label> 
+				<select id="users">
+				</select>
 			</div>
 
 			<div>
@@ -70,9 +81,10 @@
 				<input type="text" id="video"name="fileVideo" size="60" /><br />	
 			</div>
 		</section>
-
+		<div id="div2"></div>
 		<input type="submit" class="botao"id="btnEnviar"value="Gravar" />
 	</form >  
-
+	
+	<div id="teste"></div>
 </body>
 </html>

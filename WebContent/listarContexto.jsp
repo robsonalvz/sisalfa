@@ -8,7 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	 <script>
 		$(document).ready(function(){
-			$.getJSON("http://localhost:8080/meuProjetoWeb/webapi/contextos/getAll", function(result){
+			$.getJSON("http://localhost:8080/Sisalfa/getAllContext", function(result){
 				$.each(result, function(indice, value){
 					$("#contextos").append('<tr> <td>' + value.id + '</td>' + 
 						'<td>' + value.nome + '</td>' + 

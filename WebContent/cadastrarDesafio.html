@@ -8,13 +8,14 @@
 		<script>
 			$(document).ready(function() {
 				$('#btnEnviar').click(function(event) {
+					
 					$.ajax({
-						url : 'http://localhost:8080/meuProjetoWeb/webapi/desafios/add',
+						url : 'http://localhost:8080/Sisalfa/addChallenge',
 						type : 'POST',	
 						data: JSON.stringify({					
     					palavra: $('#palavra').val(),
-    					usuario: $('#idUsuario').val(),
-    					contexto: $('#idContexto').val(),
+    					idUsuario: $('#users :selected').val(),
+    					idContexto: $('#contexts :selected').val(),
     					imagem: $('#imagem').val(),
     					som: $('#som').val(),
     					video: $('#video').val()}),
@@ -31,6 +32,26 @@
 				});	
 			});
 		</script>
+	<script>
+		$(document).ready(function(){
+			$.getJSON("http://localhost:8080/Sisalfa/getAllUsers", function(result){
+				$.each(result, function(indice, value){
+					$("#users").append('<option>' + value.id + '</option>'
+					);	
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+			$.getJSON("http://localhost:8080/Sisalfa/getAllContext", function(result){
+				$.each(result, function(indice, value){
+					$("#contexts").append('<option>' + value.id + '</option>'
+					);	
+				});
+			});
+		});
+	</script>
 </head>
 <body>
 	<nav>
@@ -52,13 +73,22 @@
 			</div>
 			
 			<div>
-				<label>ID Usuario:</label> 
-				<input placeholder="Digite o id..." id="idUsuario"type="text" name="idUsuario" /><br /> 	
+				<label>Usuario:</label> 
+				<select id="users">
+				  
+				</select>
+				
+			<!--<input placeholder="Digite o id..." id="idUsuario"type="text" name="idUsuario" /><br />--> 	
 			</div>
+			
 			
 			<div>
 				<label>Selecione o Contexto:</label>
-				<input placeholder="Digite o id do contexto" id="idContexto"type="text" name="idContexto"/><br>
+				<!--<input placeholder="Digite o id do contexto" id="idContexto"type="text" name="idContexto"/><br>  -->
+				<select id="contexts">
+				  
+				</select>
+				
 			</div>
 			
 			<div>
